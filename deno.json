@@ -1,0 +1,16 @@
+{
+  "tasks": {
+    "dev": "deno run --unstable-kv --allow-sys --allow-run --allow-env --allow-net --allow-read --allow-write --watch main.ts",
+    "build-mac": "deno compile --unstable-kv --allow-all --target aarch64-apple-darwin  -o dist/qd-gm_macARM main.ts",
+    "build-win": "deno compile --unstable-kv --allow-all --target x86_64-pc-windows-msvc  -o dist/qd-gm_win64 main.ts",
+    "build-linux": "deno compile --unstable-kv --allow-all --target x86_64-unknown-linux-gnu  -o dist/qd-gm_linux main.ts",
+    "build": "deno task build-mac && deno task build-win && deno task build-linux"
+  },
+  "imports": {
+    "./": "./",
+    "@/": "./src/",
+    "@kitsonk/kv-toolbox": "jsr:@kitsonk/kv-toolbox@^0.12.0",
+    "@kyiro/hono": "jsr:@kyiro/hono@^0.1.1",
+    "@std/dotenv": "jsr:@std/dotenv@^0.224.0"
+  }
+}
